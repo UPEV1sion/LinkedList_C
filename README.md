@@ -1,6 +1,6 @@
 # LinkedList implementation in C
 
-A very performant, fairly lightweight `HashMap` implementation in C.
+A very performant, fairly lightweight `LinkedList` implementation in C.
 
 > [!NOTE]
 > This `LinkedList` implementation relies on a "doubly linked list" design.
