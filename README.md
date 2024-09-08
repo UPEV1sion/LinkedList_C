@@ -5,7 +5,7 @@ A very performant, fairly lightweight `LinkedList` implementation in C.
 > [!NOTE]
 > This `LinkedList` implementation relies on a "doubly linked list" design.
 
-This document provides an overview and detailed description of the functions available in this `LinkedList` implementatio
+This document provides an overview and detailed description of the functions available in this `LinkedList` implementation.
 
 ## Overview
 
@@ -24,6 +24,7 @@ int ll_push(LinkedList ll, const void *data);
 int ll_add(LinkedList ll, const void *data);
 void *ll_pop(LinkedList ll);
 void *ll_poll(LinkedList ll);
+void* ll_poll_last(const LinkedList ll);
 void *ll_remove(LinkedList ll, size_t index);
 void *ll_peek(LinkedList ll);
 void *ll_peek_last(LinkedList ll);
@@ -63,7 +64,7 @@ int ll_destroy(LinkedList ll);
 int ll_push(LinkedList ll, const void *data);
 ```
 
-**Description**: Pushes a new value on the `Stack`.
+**Description**: Pushes the value on the `LinkedList` (treated as a `Stack`).
 
 - **Parameters**:
   - `ll`: The `LinkedList`.
@@ -77,7 +78,7 @@ int ll_push(LinkedList ll, const void *data);
 int ll_add(LinkedList ll, const void *data);
 ```
 
-**Description**: Adds a new value to the `LinkedList`.
+**Description**: Adds the value to the `LinkedList` (treated as a `Queue`).
 
 - **Parameters**:
   - `ll`: The `LinkedList`.
@@ -91,7 +92,7 @@ int ll_add(LinkedList ll, const void *data);
 void *ll_pop(LinkedList ll);
 ```
 
-**Description**: Pops the first value from the `Stack`. Asserts that the `Stack` is not empty.
+**Description**: Pops the first value from the `LinkedList` (treated as a `Stack`). Asserts that the `LinkedList` is not empty.
 
 - **Parameters**:
   - `ll`: The `LinkedList`.
@@ -104,7 +105,20 @@ void *ll_pop(LinkedList ll);
 void *ll_poll(LinkedList ll);
 ```
 
-**Description**: Poll the first value from the `Stack`. If the `Stack` is empty NULL is returned.
+**Description**: Polls the first value from the `LinkedList` (treated as a `Queue`). Returns `NULL` if `LinkedList` is empty.
+
+- **Parameters**:
+  - `ll`: The `LinkedList`.
+  
+- **Returns**: The polled value.
+
+---
+
+```c 
+void *ll_poll_last(LinkedList ll);
+```
+
+**Description**: Polls the last value from the `LinkedList`. Returns `NULL` if `LinkedList` is empty.
 
 - **Parameters**:
   - `ll`: The `LinkedList`.
@@ -121,6 +135,7 @@ void *ll_remove(LinkedList ll, size_t index);
 
 - **Parameters**:
   - `ll`: The `LinkedList`.
+  - `index`: The index of the item to remove.
   
 - **Returns**: The removed value.
 
@@ -130,7 +145,7 @@ void *ll_remove(LinkedList ll, size_t index);
 void *ll_peek(LinkedList ll);
 ```
 
-**Description**: Returns the first item on the `Stack`.
+**Description**: Returns the first item on the `LinkedList` (treated as a `Stack`).
 
 - **Parameters**:
   - `ll`: The `LinkedList`.
@@ -143,7 +158,7 @@ void *ll_peek(LinkedList ll);
 void *ll_peek_last(LinkedList ll);
 ```
 
-**Description**: Returns the last item on the `Stack`.
+**Description**: Returns the last item on the `LinkedList` (treated as a `Stack`).
 
 - **Parameters**:
   - `ll`: The `LinkedList`.
@@ -157,7 +172,7 @@ void *ll_peek_last(LinkedList ll);
 void *ll_get(LinkedList ll, size_t index);
 ```
 
-**Description**: Gets the item specified at the index.
+**Description**: Gets the item specified at the index in the `LinkedList`.
 
 - **Parameters**:
   - `ll`: The `LinkedList`.
@@ -179,18 +194,6 @@ int ll_length(LinkedList ll);
 
 ---
 
-```c 
-int ll_destroy(LinkedList ll);
-```
-
-**Description**: Destroys the `LinkedList`.
-
-- **Parameters**:
-  - `ll`: The `LinkedList`.
-  
-- **Returns**: A success code.
-  
----
 
 ## Error Codes
 
