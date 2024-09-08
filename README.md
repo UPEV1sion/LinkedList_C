@@ -3,7 +3,7 @@
 A very performant, fairly lightweight `LinkedList` implementation in C.
 
 > [!NOTE]
-> This `LinkedList` implementation relies on a "doubly linked list" design.
+> This `LinkedList` implementation relies on a "Doubly Linked List" design.
 
 This document provides an overview and detailed description of the functions available in this `LinkedList` implementation.
 
@@ -202,6 +202,31 @@ int ll_length(LinkedList ll);
 
 ---
 
+## Example
+
+Here is a basic example demonstrating how to use the `LinkedList` functions:
+
+```c
+#include "linkedlist.h"
+
+int main()
+{
+	// Create a LinkedList
+	LinkedList ll = ll_create(sizeof(int));
+	
+	// Push a item onto the LinkedList
+	int value = 15;
+	ll_push(ll, &value);
+	
+	// Retrieve the value
+	int *retrieved_value = ll_pop(ll);
+
+	// Destroy the LinkedList
+	ll_destroy(ll);
+	
+	return 0;
+}
+```
 
 
 
