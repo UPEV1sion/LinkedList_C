@@ -24,7 +24,7 @@ int ll_push(LinkedList ll, const void *data);
 int ll_add(LinkedList ll, const void *data);
 void *ll_pop(LinkedList ll);
 void *ll_poll(LinkedList ll);
-void* ll_poll_last(const LinkedList ll);
+void* ll_poll_last(LinkedList ll);
 void *ll_remove(LinkedList ll, size_t index);
 void *ll_peek(LinkedList ll);
 void *ll_peek_last(LinkedList ll);
