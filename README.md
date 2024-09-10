@@ -3,7 +3,7 @@
 A very performant, fairly lightweight `LinkedList` implementation in C.
 
 > [!NOTE]
-> This `LinkedList` implementation relies on a "Doubly Linked List" design.
+> This `LinkedList` implementation relies on a "Doubly Linked List" design. This `LinkedList` implementation does all memory management and cleanup internally.
 
 This document provides an overview and detailed description of the functions available in this `LinkedList` implementation.
 
