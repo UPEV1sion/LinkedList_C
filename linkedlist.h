@@ -1,106 +1,91 @@
 //
-// Created by Emanuel on 07.09.2024.
+// Created by Emanuel on 09.09.2024.
 //
 
-#ifndef LINKEDLIST_H
-#define LINKEDLIST_H
+#ifndef ARRAYLIST_H
+#define ARRAYLIST_H
 
 #include <stddef.h>
+#include <stdbool.h>
 
-
-typedef struct LinkedList *LinkedList;
-
+typedef struct ArrayList *ArrayList;
 
 /**
- * @brief Creates a new LinkedList.
+ * @brief Creates a new ArrayList.
  *
+ * @param al_capacity The initial capacity
  * @param value_size The sizeof value of the value
- * @return LinkedList
+ * @return A new ArrayList
  */
-LinkedList ll_create(size_t value_size);
+ArrayList al_create(size_t al_capacity, size_t value_size);
 
 /**
- * @brief Pushes a new value on the Stack.
+ * @brief Destroys the ArrayList.
  *
- * @param data The data to be pushed
+ * @param al The ArrayList
  * @return Success code
  */
-int ll_push(LinkedList ll, const void *data);
+int al_destroy(ArrayList al);
 
 /**
- * @brief Adds a new value to the LinkedList.
+ * @brief Adds a new value to the ArrayList.
  *
- * @param ll The LinkedList
+ * @param al The ArrayList
  * @param data The data to be added
  * @return Success code
  */
-int ll_add(LinkedList ll, const void *data);
+int al_add(ArrayList al, const void *data);
 
 /**
- * @brief Pops the first value from the Stack. Asserts that the Stack is not empty.
+ * @brief Insert a new value in the ArrayList.
  *
- * @param ll The LinkedList
- * @return The popped value
+ * @param al The ArrayList
+ * @param index The index where the item should be inserted
+ * @param data The data to be added
+ * @return Success code
  */
-void *ll_pop(LinkedList ll);
+int al_insert(ArrayList al, size_t index, const void *data);
 
 /**
- * @brief Polls the first value from the Stack. If the Stack is empty NULL is returned.
+ * @brief Removes the item at the specified index from the ArrayList.
  *
- * @param ll The LinkedList
- * @return The polled value
+ * @param al The ArrayList
+ * @param index The index where the item should be removed
+ * @return The removed item
  */
-void *ll_poll(LinkedList ll);
+void* al_remove(ArrayList al, size_t index);
 
 /**
- * @brief Removes an item from the LinkedList.
+ * @brief Removes the last item from the ArrayList.
  *
- * @param ll The LinkedList
- * @param index The index from which an item should be removed
- * @return The removed value
+ * @param al The ArrayList
+ * @return The removed item
  */
-void *ll_remove(LinkedList ll, size_t index);
+void* al_remove_last(ArrayList al);
 
 /**
- * @brief Returns the first item on the Stack.
+ * @brief Gets the item at the specified index.
  *
- * @param ll The LinkedList
- * @return The first value
- */
-void *ll_peek(LinkedList ll);
-
-/**
- * @brief Returns the last item on the Stack.
- *
- * @param ll The LinkedList
- * @return The last value
- */
-void *ll_peek_last(LinkedList ll);
-
-/**
- * @brief Gets the item at the index.
- *
- * @param ll The LinkedList
- * @param index index of the value
+ * @param al The ArrayList
+ * @param index The index of the item
  * @return The item
  */
-void *ll_get(LinkedList ll, size_t index);
+void* al_get(ArrayList al, size_t index);
 
 /**
- * @brief Returns the length of the LinkedList
+ * @brief Returns the size of the ArrayList.
  *
- * @param ll The LinkedList
- * @return The length
+ * @param al The ArrayList
+ * @return The size
  */
-int ll_length(LinkedList ll);
+size_t al_size(ArrayList al);
 
 /**
- * @brief Destroys the LinkedList
+ * @brief checks if the ArrayList is empty.
  *
- * @param ll The LinkedList
- * @return Sucess code
+ * @param al The ArrayList
+ * @return True or falsehood
  */
-int ll_destroy(LinkedList ll);
+bool al_is_empty(ArrayList al);
 
-
-#endif //LINKEDLIST_H
+#endif //ARRAYLIST_H
