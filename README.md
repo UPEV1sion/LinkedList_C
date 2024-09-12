@@ -22,10 +22,11 @@ LinkedList ll_create(size_t value_size);
 int ll_destroy(LinkedList ll);
 int ll_push(LinkedList ll, const void *data);
 int ll_add(LinkedList ll, const void *data);
+int ll_offer(LinkedList ll, const void *data);
 void *ll_pop(LinkedList ll);
 void *ll_poll(LinkedList ll);
 void* ll_poll_last(LinkedList ll);
-void *ll_remove(LinkedList ll, size_t index);
+int ll_remove(LinkedList ll, size_t index);
 void *ll_peek(LinkedList ll);
 void *ll_peek_last(LinkedList ll);
 void *ll_get(LinkedList ll, size_t index);
@@ -89,6 +90,20 @@ int ll_add(LinkedList ll, const void *data);
 ---
 
 ```c 
+int ll_offer(LinkedList ll, const void *data);
+```
+
+**Description**: Offers the value to the `LinkedList` (treated as a `Queue`).
+
+- **Parameters**:
+  - `ll`: The `LinkedList`.
+  - `data`: The value to be added.
+  
+- **Returns**: A success code.
+
+---
+
+```c 
 void *ll_pop(LinkedList ll);
 ```
 
@@ -128,7 +143,7 @@ void *ll_poll_last(LinkedList ll);
 ---
 
 ```c 
-void *ll_remove(LinkedList ll, size_t index);
+int ll_remove(LinkedList ll, size_t index);
 ```
 
 **Description**: Removes the item from the `LinkedList` at the specified index.
@@ -137,7 +152,7 @@ void *ll_remove(LinkedList ll, size_t index);
   - `ll`: The `LinkedList`.
   - `index`: The index of the item to remove.
   
-- **Returns**: The removed value.
+- **Returns**: A success code.
 
 ---
 
