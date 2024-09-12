@@ -85,7 +85,7 @@ int ll_add(const LinkedList ll, const void *data)
     return 0;
 }
 
-int ll_offer(LinkedList ll, const void *data)
+int ll_offer(const LinkedList ll, const void *data)
 {
     return ll_add(ll, data);
 }
