@@ -1,91 +1,130 @@
 //
-// Created by Emanuel on 09.09.2024.
+// Created by Emanuel on 07.09.2024.
 //
 
-#ifndef ARRAYLIST_H
-#define ARRAYLIST_H
+#ifndef LINKEDLIST_H
+#define LINKEDLIST_H
 
-#include <stddef.h>
 #include <stdbool.h>
+#include <stddef.h>
 
-typedef struct ArrayList *ArrayList;
+typedef struct LinkedList *LinkedList;
 
 /**
- * @brief Creates a new ArrayList.
+ * @brief Creates a new LinkedList.
  *
- * @param al_capacity The initial capacity
  * @param value_size The sizeof value of the value
- * @return A new ArrayList
+ * @return LinkedList
  */
-ArrayList al_create(size_t al_capacity, size_t value_size);
+LinkedList ll_create(size_t value_size);
 
 /**
- * @brief Destroys the ArrayList.
+ * @brief Pushes a new value on the Stack.
  *
- * @param al The ArrayList
+ * @param ll The LinkedList
+ * @param data The data to be pushed
  * @return Success code
  */
-int al_destroy(ArrayList al);
+int ll_push(LinkedList ll, const void *data);
 
 /**
- * @brief Adds a new value to the ArrayList.
+ * @brief Adds a new value to the LinkedList.
  *
- * @param al The ArrayList
+ * @param ll The LinkedList
  * @param data The data to be added
  * @return Success code
  */
-int al_add(ArrayList al, const void *data);
+int ll_add(LinkedList ll, const void *data);
 
 /**
- * @brief Insert a new value in the ArrayList.
+ * @brief Offers a new value to the LinkedList.
  *
- * @param al The ArrayList
- * @param index The index where the item should be inserted
+ * @param ll The LinkedList
  * @param data The data to be added
  * @return Success code
  */
-int al_insert(ArrayList al, size_t index, const void *data);
+int ll_offer(LinkedList ll, const void *data);
 
 /**
- * @brief Removes the item at the specified index from the ArrayList.
+ * @brief Pops the first value from the Stack. Asserts that the Stack is not empty.
  *
- * @param al The ArrayList
- * @param index The index where the item should be removed
- * @return The removed item
+ * @param ll The LinkedList
+ * @return The popped value
  */
-void* al_remove(ArrayList al, size_t index);
+void *ll_pop(LinkedList ll);
 
 /**
- * @brief Removes the last item from the ArrayList.
+ * @brief Polls the first value from the Stack. If the Stack is empty NULL is returned.
  *
- * @param al The ArrayList
- * @return The removed item
+ * @param ll The LinkedList
+ * @return The polled value
  */
-void* al_remove_last(ArrayList al);
+void *ll_poll(LinkedList ll);
 
 /**
- * @brief Gets the item at the specified index.
+ * @brief Removes the item from the LinkedList at the specified index.
  *
- * @param al The ArrayList
- * @param index The index of the item
+ * @param ll The LinkedList
+ * @param index The index from which an item should be removed
+ * @return Success code
+ */
+int ll_remove(LinkedList ll, size_t index);
+
+/**
+ * @brief Returns the first item on the Stack.
+ *
+ * @param ll The LinkedList
+ * @return The first value
+ */
+void *ll_peek(LinkedList ll);
+
+/**
+ * @brief Returns the last item on the Stack.
+ *
+ * @param ll The LinkedList
+ * @return The last value
+ */
+void *ll_peek_last(LinkedList ll);
+
+/**
+ * @brief Gets the item at the index.
+ *
+ * @param ll The LinkedList
+ * @param index index of the value
  * @return The item
  */
-void* al_get(ArrayList al, size_t index);
+void *ll_get(LinkedList ll, size_t index);
 
 /**
- * @brief Returns the size of the ArrayList.
+ * @brief Returns the length of the LinkedList.
  *
- * @param al The ArrayList
- * @return The size
+ * @param ll The LinkedList
+ * @return The length
  */
-size_t al_size(ArrayList al);
+int ll_length(LinkedList ll);
 
 /**
- * @brief checks if the ArrayList is empty.
+ * @brief Checks if the LinkedList is empty.
  *
- * @param al The ArrayList
+ * @param ll The LinkedList
  * @return True or falsehood
  */
-bool al_is_empty(ArrayList al);
+bool ll_is_empty(LinkedList ll);
 
-#endif //ARRAYLIST_H
+/**
+ * @brief Checks if the LinkedList contains the item.
+ *
+ * @param ll The LinkedList
+ * @return True or falsehood
+ */
+bool contains(LinkedList ll, const void *data);
+
+/**
+ * @brief Destroys the LinkedList.
+ *
+ * @param ll The LinkedList
+ * @return Success code
+ */
+int ll_destroy(LinkedList ll);
+
+#endif //LINKEDLIST_H
