@@ -85,6 +85,12 @@ int ll_add(const LinkedList ll, const void *data)
     return 0;
 }
 
+int ll_offer(LinkedList ll, const void *data)
+{
+    return ll_add(ll, data);
+}
+
+
 void* ll_pop(const LinkedList ll)
 {
     assert(ll->head != NULL);
@@ -130,15 +136,14 @@ void* ll_poll_last(const LinkedList ll)
     return old_tail->payload;
 }
 
-void* ll_remove(const LinkedList ll, size_t index)
+int ll_remove(const LinkedList ll, size_t index)
 {
-    if (index >= ll->length) return NULL;
+    if (index >= ll->length) return 1;
     Node *node = ll->head;
     while (node && index--)
         node = node->next;
 
-    if (!node) return NULL;
-    void *data = node->payload;
+    if (!node) return 1;
 
     if (node->prev)
         node->prev->next = node->next;
@@ -150,9 +155,8 @@ void* ll_remove(const LinkedList ll, size_t index)
     else
         ll->tail = node->prev;
 
-    push_tomb_list(ll, node);
     ll->length--;
-    return data;
+    return 0;
 }
 
 void* ll_peek(const LinkedList ll)
@@ -180,6 +184,22 @@ int ll_length(const LinkedList ll)
 {
     return ll->length;
 }
+
+bool ll_is_empty(LinkedList ll)
+{
+    return ll->length == 0;
+}
+
+bool contains(LinkedList ll, const void *data)
+{
+    for (Node *node = ll->head; node != NULL; node = node->next)
+    {
+        if(memcmp(node->payload, data, ll->value_size) == 0) return true;
+    }
+
+    return false;
+}
+
 
 int ll_destroy(const LinkedList ll)
 {
