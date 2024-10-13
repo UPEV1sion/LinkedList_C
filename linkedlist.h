@@ -117,7 +117,7 @@ bool ll_is_empty(LinkedList ll);
  * @param ll The LinkedList
  * @return True or falsehood
  */
-bool contains(LinkedList ll, const void *data);
+bool ll_contains(LinkedList ll, const void *data);
 
 /**
  * @brief Destroys the LinkedList.
