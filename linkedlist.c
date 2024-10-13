@@ -190,7 +190,7 @@ bool ll_is_empty(LinkedList ll)
     return ll->length == 0;
 }
 
-bool contains(LinkedList ll, const void *data)
+bool ll_contains(LinkedList ll, const void *data)
 {
     for (Node *node = ll->head; node != NULL; node = node->next)
     {
